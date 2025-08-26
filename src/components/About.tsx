@@ -1,48 +1,85 @@
+import { Award, Users, Calendar, Target } from 'lucide-react';
 import aboutEngineer from '@/assets/about-engineer.jpg';
 
 const About = () => {
+  const stats = [
+    { icon: Calendar, number: "18+", label: "Years Experience" },
+    { icon: Users, number: "60+", label: "Satisfied Clients" },
+    { icon: Target, number: "1,500+", label: "Projects Completed" },
+    { icon: Award, number: "100%", label: "Licensed Professional" }
+  ];
+
   return (
-    <section id="about" className="py-20 bg-engineering-white">
+    <section id="about" className="py-24 bg-engineering-white">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-engineering-dark mb-6">
-              About LAMAR Engineering
-            </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                LAMAR Engineering is a privately civil and structural engineering design and consulting firm located in South Bay San Diego. We provide professional civil and structural engineering services to private residential and commercial projects.
-              </p>
-              <p>
-                We specialize in the design of attractive, functional, cost effective solutions to land development and structural engineering challenges and assist our clients navigate the maze of regulations required to bring their projects to completion.
-              </p>
-              <p>
-                Lamar Engineering is a small firm that specializes in one-on-one personal service, where we treat every client as our number one priority. Our Principal, Luis A. Labrada, P.E., has over 18 years of combined experience in the field of civil, structural, geotechnical, material testing and inspection, and project management in residential, commercial, public and private development projects.
-              </p>
-              <p>
-                He graduated from the University of California, Los Angeles (UCLA) in 1997 with a bachelors of Civil Engineering degree. He has worked on privately consulting firms, and governmental public agency. Mr. Labrada was a co-founder of two local civil and structural engineering firms (GALA Design Group and GL Engineers, Inc.) before establishing his own firm.
-              </p>
-              <p>
-                Luis A. Labrada, P.E. has provided a wide variety of professional civil and structural engineering services to over 60 different clients and completed over 1,500 projects in southern California.
-              </p>
-            </div>
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <div className="inline-block px-6 py-2 bg-engineering-cyan/10 rounded-full mb-6">
+            <span className="text-engineering-cyan font-semibold text-sm uppercase tracking-wider">
+              About Us
+            </span>
           </div>
-          
-          <div className="lg:order-first">
-            <div className="relative">
-              <img 
-                src={aboutEngineer} 
-                alt="Luis A. Labrada, P.E. working on engineering plans"
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg">
-                <div className="text-center">
-                  <div className="text-3xl font-bold">1,500+</div>
-                  <div className="text-sm">Projects Completed</div>
-                </div>
+          <h2 className="text-5xl font-bold text-engineering-dark mb-6">
+            Professional Engineering Excellence
+          </h2>
+          <div className="w-24 h-1 bg-engineering-cyan mx-auto"></div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-20">
+          {/* Image */}
+          <div className="relative group lg:order-first">
+            <div className="absolute inset-0 bg-engineering-cyan/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
+            <img 
+              src={aboutEngineer} 
+              alt="Professional engineer working on construction plans"
+              className="relative w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-professional z-10"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-engineering-white p-6 rounded-xl shadow-card z-20">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-engineering-cyan">P.E.</div>
+                <div className="text-sm text-engineering-steel">Licensed</div>
               </div>
             </div>
           </div>
+          
+          {/* Content */}
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold text-engineering-dark mb-8">
+              LAMAR Engineering, Inc.
+            </h3>
+            <div className="text-lg text-engineering-steel space-y-6 leading-relaxed">
+              <p>
+                A privately-owned civil and structural engineering design and consulting firm located in South Bay San Diego, providing professional engineering services to private residential and commercial projects.
+              </p>
+              <p>
+                We specialize in designing <strong className="text-engineering-dark">attractive, functional, and cost-effective solutions</strong> to land development and structural engineering challenges, helping our clients navigate complex regulations to bring their projects to completion.
+              </p>
+              <p>
+                As a boutique firm, we provide <strong className="text-engineering-cyan">one-on-one personal service</strong>, treating every client as our number one priority with dedicated attention to detail and excellence.
+              </p>
+            </div>
+
+            {/* Principal Info */}
+            <div className="mt-8 p-6 bg-engineering-light/50 rounded-xl border-l-4 border-engineering-cyan">
+              <h4 className="text-xl font-bold text-engineering-dark mb-3">Luis A. Labrada, P.E.</h4>
+              <p className="text-engineering-steel">
+                Our Principal brings over 18 years of combined experience in civil, structural, geotechnical, material testing and inspection, and project management. UCLA graduate (1997) with extensive experience in both private consulting and governmental agencies.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center group">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-engineering-cyan/10 rounded-xl mb-4 group-hover:bg-engineering-cyan/20 transition-colors">
+                <stat.icon className="w-8 h-8 text-engineering-cyan" />
+              </div>
+              <div className="text-3xl font-bold text-engineering-dark mb-2">{stat.number}</div>
+              <div className="text-engineering-steel font-medium">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

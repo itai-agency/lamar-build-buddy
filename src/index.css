@@ -20,37 +20,44 @@ All colors MUST be HSL.
     --primary: 198 100% 41%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 97%;
-    --secondary-foreground: 210 11% 16%;
+    --secondary: 210 11% 16%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 97%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 0 0% 97%;
-    --accent-foreground: 210 11% 16%;
+    --accent: 198 100% 41%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 0 0% 88%;
+    --input: 0 0% 94%;
     --ring: 198 100% 41%;
 
-    /* Custom LAMAR Engineering colors */
+    /* Professional LAMAR Engineering colors */
     --engineering-cyan: 198 100% 41%;
     --engineering-dark: 210 11% 16%;
     --engineering-light: 0 0% 97%;
     --engineering-white: 0 0% 100%;
+    --engineering-blue: 220 60% 50%;
+    --engineering-steel: 200 10% 40%;
+    --engineering-concrete: 40 5% 85%;
     
-    /* Gradients */
+    /* Professional gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--engineering-cyan)), hsl(var(--engineering-dark)));
     --gradient-section: linear-gradient(180deg, hsl(var(--engineering-white)), hsl(var(--engineering-light)));
+    --gradient-professional: linear-gradient(120deg, hsl(var(--engineering-blue)) 0%, hsl(var(--engineering-cyan)) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(var(--engineering-dark) / 0.8), hsl(var(--engineering-steel) / 0.7));
     
-    /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--engineering-cyan) / 0.2);
-    --shadow-card: 0 4px 20px -4px hsl(var(--engineering-dark) / 0.1);
+    /* Professional shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--engineering-cyan) / 0.3);
+    --shadow-card: 0 8px 32px -8px hsl(var(--engineering-dark) / 0.15);
+    --shadow-professional: 0 20px 60px -20px hsl(var(--engineering-dark) / 0.2);
+    --shadow-hover: 0 12px 40px -12px hsl(var(--engineering-cyan) / 0.4);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
