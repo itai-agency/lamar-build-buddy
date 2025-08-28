@@ -1,7 +1,7 @@
-import customHome from '@/assets/custom-home.jpg';
-import multiFamily from '@/assets/multi-family.jpg';
-import structuralEngineering from '@/assets/structural-engineering.jpg';
-import civilEngineering from '@/assets/civil-engineering.jpg';
+import customHome from '@/assets/imagen2.jpg';
+import multiFamily from '@/assets/Image5.jpg';
+import structuralEngineering from '@/assets/Image3.jpg';
+import civilEngineering from '@/assets/Image4.jpg';
 
 const Gallery = () => {
   const galleryImages = [

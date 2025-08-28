@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle } from 'lucide-react';
-import structuralEngineering from '@/assets/structural-engineering.jpg';
-import civilEngineering from '@/assets/civil-engineering.jpg';
+import structuralEngineering from '@/assets/structural-or-civil-engineer.jpg';
+import civilEngineering from '@/assets/construction-services1.jpg';
 
 const Services = () => {
   const services = [

@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
-import customHome from '@/assets/custom-home.jpg';
-import multiFamily from '@/assets/multi-family.jpg';
-
+import customHome from '@/assets/image1.jpg';
+import multiFamily from '@/assets/image6.jpg';
+import comercialprojects from '@/assets/image7.jpg';
 const MenuHighlights = () => {
   const highlights = [
     {
@@ -16,7 +16,7 @@ const MenuHighlights = () => {
     },
     {
       title: 'Commercial Projects',
-      image: customHome,
+      image: comercialprojects,
       description: 'Professional commercial building solutions'
     }
   ];

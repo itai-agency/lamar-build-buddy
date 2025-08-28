@@ -1,5 +1,5 @@
 import { Award, Users, Calendar, Target } from 'lucide-react';
-import aboutEngineer from '@/assets/about-engineer.jpg';
+import aboutEngineer from '@/assets/civil-engineer-about.jpg';
 
 const About = () => {
   const stats = [
