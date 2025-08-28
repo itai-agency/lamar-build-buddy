@@ -1,4 +1,5 @@
 import { Facebook, Phone, Mail } from 'lucide-react';
+import lamarLogoLight from '@/assets/lamar-light.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               {/* Logo Image */}
               <img 
-                src="/src/assets/lamar-light.png" 
+                src={lamarLogoLight} 
                 alt="LAMAR ENGINEERING CIVIL + STRUCTURAL"
                 className="h-10 w-auto"
                 onError={(e) => {

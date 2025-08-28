@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import lamarLogo from '@/assets/lamar-logo-removebg-preview.png';
+import lamarLogoLight from '@/assets/lamar-light.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,7 +49,7 @@ const Header = () => {
             <div className="flex items-center">
               {/* Logo Image */}
               <img 
-                src={isScrolled ? "/src/assets/lamar-logo-removebg-preview.png" : "/src/assets/lamar-light.png"}
+                src={isScrolled ? lamarLogo : lamarLogoLight}
                 alt="LAMAR ENGINEERING CIVIL + STRUCTURAL"
                 className="h-12 w-auto"
                 onError={(e) => {
