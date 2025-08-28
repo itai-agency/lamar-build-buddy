@@ -104,9 +104,17 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
-            <a href="tel:+16194734045" className="flex items-center space-x-2 text-engineering-cyan hover:text-engineering-blue transition-colors">
-              <Phone className="w-4 h-4" />
-              <span className="font-medium">(619) 473-4045</span>
+          <a 
+    href="tel:+16194734045" 
+    className={`flex items-center space-x-2 transition-colors ${
+      isScrolled 
+        ? 'text-engineering-cyan hover:text-engineering-blue' 
+        : 'text-engineering-white hover:text-engineering-blue' 
+
+    }`}
+  >
+    <Phone className="w-4 h-4" />
+    <span className="font-medium">(619) 473-4045</span>
             </a>
             <Button 
               onClick={() => scrollToSection('contact')}
