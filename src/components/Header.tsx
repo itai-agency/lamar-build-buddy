@@ -44,22 +44,43 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-engineering-cyan to-engineering-blue rounded-xl flex items-center justify-center shadow-elegant">
-                <span className="text-engineering-white font-bold text-xl">L</span>
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-engineering-cyan rounded-full border-2 border-white"></div>
-            </div>
-            <div>
-              <span className={`text-2xl font-bold transition-colors duration-300 ${
-                isScrolled ? 'text-engineering-dark' : 'text-engineering-white'
-              }`}>
-                LAMAR
-              </span>
-              <div className={`text-sm font-medium transition-colors duration-300 ${
-                isScrolled ? 'text-engineering-steel' : 'text-engineering-light/80'
-              }`}>
-                Engineering, Inc.
+            <div className="flex items-center">
+              {/* Logo Image */}
+              <img 
+                src={isScrolled ? "/src/assets/lamar-logo-removebg-preview.png" : "/src/assets/lamar-light.png"}
+                alt="LAMAR ENGINEERING CIVIL + STRUCTURAL"
+                className="h-12 w-auto"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* Fallback Text Logo */}
+              <div className="hidden flex items-center space-x-2">
+                <div className="flex space-x-1">
+                  <div className="w-2 h-8 bg-gradient-to-b from-engineering-blue to-engineering-cyan rounded-sm"></div>
+                  <div className="w-2 h-8 bg-engineering-steel rounded-sm"></div>
+                  <div className="w-2 h-8 bg-engineering-light rounded-sm"></div>
+                </div>
+                <div className="flex flex-col">
+                  <span className={`text-2xl font-bold transition-colors duration-300 ${
+                    isScrolled ? 'text-engineering-dark' : 'text-engineering-white'
+                  }`}>
+                    LAMAR
+                  </span>
+                  <div className={`text-sm font-medium transition-colors duration-300 ${
+                    isScrolled ? 'text-engineering-steel' : 'text-engineering-white/80'
+                  }`}>
+                    ENGINEERING
+                  </div>
+                  <div className={`text-xs font-medium transition-colors duration-300 ${
+                    isScrolled ? 'text-engineering-steel' : 'text-engineering-white/70'
+                  }`}>
+                    CIVIL + STRUCTURAL
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -53,17 +53,13 @@ const Hero = () => {
               onClick={() => scrollToSection('contact')}
               variant="outline"
               size="lg"
-              className="border-2 border-engineering-white/30 text-engineering-white hover:bg-engineering-white/10 backdrop-blur-sm px-12 py-6 text-lg transition-all duration-300"
+              className="bg-engineering-white text-engineering-dark border-2 border-engineering-white hover:bg-engineering-white/90 hover:text-engineering-dark backdrop-blur-sm px-12 py-6 text-lg transition-all duration-300 shadow-professional"
             >
               View Our Work
             </Button>
           </div>
         </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-engineering-white/70" />
-        </div>
+      
       </div>
     </section>
   );

@@ -15,7 +15,7 @@ const Testimonial = () => {
     {
       name: 'Susan S',
       location: 'San Diego, CA',
-      content: 'Lamar Engineering has been GREAT since day ONE. Luis has always been exceptional and has performed above and beyond the call of duty. I have no construction experience as far as building permits, designs, and cost. Luis has walked us through the process and MADE OUR PROJECT easier. It has been a pleasure working with him. I HIGHLY RECOMMEND LAMAR ENGINEERING !!!'
+      content: 'LAMAR ENGINEERING CIVIL + STRUCTURAL has been GREAT since day ONE. Luis has always been exceptional and has performed above and beyond the call of duty. I have no construction experience as far as building permits, designs, and cost. Luis has walked us through the process and MADE OUR PROJECT easier. It has been a pleasure working with him. I HIGHLY RECOMMEND LAMAR ENGINEERING CIVIL + STRUCTURAL !!!'
     }
   ];
 

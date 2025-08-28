@@ -81,7 +81,7 @@ const Location = () => {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="LAMAR Engineering Office Location"
+              title="LAMAR ENGINEERING CIVIL + STRUCTURAL Office Location"
             />
           </div>
         </div>

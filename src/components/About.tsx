@@ -45,7 +45,7 @@ const About = () => {
           {/* Content */}
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-engineering-dark mb-8">
-              LAMAR Engineering, Inc.
+              
             </h3>
             <div className="text-lg text-engineering-steel space-y-6 leading-relaxed">
               <p>

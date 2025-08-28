@@ -9,10 +9,31 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">L</span>
+              {/* Logo Image */}
+              <img 
+                src="/src/assets/lamar-light.png" 
+                alt="LAMAR ENGINEERING CIVIL + STRUCTURAL"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* Fallback Text Logo */}
+              <div className="hidden flex items-center space-x-2">
+                <div className="flex space-x-1">
+                  <div className="w-1.5 h-6 bg-gradient-to-b from-engineering-blue to-engineering-cyan rounded-sm"></div>
+                  <div className="w-1.5 h-6 bg-engineering-steel rounded-sm"></div>
+                  <div className="w-1.5 h-6 bg-engineering-light rounded-sm"></div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-xl">LAMAR</span>
+                  <span className="text-sm font-medium text-gray-400">ENGINEERING</span>
+                  <span className="text-xs font-medium text-gray-500">CIVIL + STRUCTURAL</span>
+                </div>
               </div>
-              <span className="font-bold text-xl">LAMAR Engineering</span>
             </div>
             <p className="text-gray-300 mb-4">
               Professional civil and structural engineering services in South Bay San Diego.
@@ -78,7 +99,7 @@ const Footer = () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "LAMAR Engineering, Inc.",
+          "name": "LAMAR ENGINEERING CIVIL + STRUCTURAL",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "809 Bowsprit Road, Suite 105",
