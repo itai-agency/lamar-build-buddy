@@ -11,7 +11,7 @@ const Hero = () => {
   // Arreglo con las imágenes que deseas mostrar en el carrusel
   const images = [structuralEngineering, civilEngineering];
 
-  // Función para cambiar la imagen con fade y escala
+  // Función para cambiar la imagen con fade
   const nextImage = () => {
     setFade(true); // Inicia el desvanecimiento
     setTimeout(() => {
@@ -56,7 +56,7 @@ const Hero = () => {
         <img 
           src={images[currentImage]} 
           alt="Carrusel" 
-          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out transform ${fade ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}
+          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${fade ? 'opacity-0' : 'opacity-100'}`}
         />
       </div>
       
@@ -103,4 +103,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
