@@ -6,22 +6,31 @@ import civilEngineering from '@/assets/Lamar-Eng-Banner.jpg';
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0); // Estado para la imagen actual
+  const [fade, setFade] = useState(false); // Estado para controlar el desvanecimiento
 
   // Arreglo con las imágenes que deseas mostrar en el carrusel
   const images = [structuralEngineering, civilEngineering];
 
-  // Función para cambiar la imagen
+  // Función para cambiar la imagen con fade y escala
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length); // Cambia a la siguiente imagen
+    setFade(true); // Inicia el desvanecimiento
+    setTimeout(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length); // Cambia a la siguiente imagen después de un tiempo
+    }, 400); // Tiempo de espera para que la animación ocurra (400ms)
   };
 
   // Usamos useEffect para que el carrusel pase de forma automática
   useEffect(() => {
-    const interval = setInterval(nextImage, 3000); // Cambia la imagen cada 3 segundos
+    const interval = setInterval(nextImage, 5000); // Cambia la imagen cada 5 segundos
 
     // Limpiar el intervalo al desmontar el componente
     return () => clearInterval(interval);
   }, []);
+
+  // Usamos useEffect para restablecer la animación de desvanecimiento
+  useEffect(() => {
+    setFade(false); // Resetea el estado de fade cuando se cambia la imagen
+  }, [currentImage]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -47,7 +56,7 @@ const Hero = () => {
         <img 
           src={images[currentImage]} 
           alt="Carrusel" 
-          className="w-full h-full object-cover transition-all duration-500"
+          className={`w-full h-full object-cover transition-opacity duration-1000 ease-in-out transform ${fade ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}
         />
       </div>
       
@@ -94,3 +103,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
