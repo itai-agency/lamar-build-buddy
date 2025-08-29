@@ -3,13 +3,20 @@ import { Button } from '@/components/ui/button';
 import heroBackground from '@/assets/Lamar-Eng-Banner.jpg';
 import structuralEngineering from '@/assets/thumbnail-3.jpg';
 import civilEngineering from '@/assets/Lamar-Eng-Banner.jpg';
+import additionalImage1 from '@/assets/ing-Civil_sociedad-actual.png'; // Imagen adicional 1
+import additionalImage2 from '@/assets/Ingenieria-Civil.jpg'; // Imagen adicional 2
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0); // Estado para la imagen actual
   const [fade, setFade] = useState(false); // Estado para controlar el desvanecimiento
 
   // Arreglo con las imágenes que deseas mostrar en el carrusel
-  const images = [structuralEngineering, civilEngineering];
+  const images = [
+    structuralEngineering,
+    civilEngineering,
+    additionalImage1, // Imagen adicional 1
+    additionalImage2  // Imagen adicional 2
+  ];
 
   // Función para cambiar la imagen con fade
   const nextImage = () => {
@@ -21,7 +28,7 @@ const Hero = () => {
 
   // Usamos useEffect para que el carrusel pase de forma automática
   useEffect(() => {
-    const interval = setInterval(nextImage, 5000); // Cambia la imagen cada 5 segundos
+    const interval = setInterval(nextImage, 8000); // Cambia la imagen cada 8 segundos (8000ms)
 
     // Limpiar el intervalo al desmontar el componente
     return () => clearInterval(interval);
