@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import heroBackground from '@/assets/Lamar-Eng-Banner.jpg';
 import structuralEngineering from '@/assets/thumbnail-3.jpg';
 import civilEngineering from '@/assets/Lamar-Eng-Banner.jpg';
@@ -16,9 +15,13 @@ const Hero = () => {
     setCurrentImage((prev) => (prev + 1) % images.length); // Cambia a la siguiente imagen
   };
 
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length); // Cambia a la imagen anterior
-  };
+  // Usamos useEffect para que el carrusel pase de forma automática
+  useEffect(() => {
+    const interval = setInterval(nextImage, 3000); // Cambia la imagen cada 3 segundos
+
+    // Limpiar el intervalo al desmontar el componente
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -84,25 +87,6 @@ const Hero = () => {
               View Our Work
             </Button>
           </div>
-        </div>
-        
-        {/* Botones del Carrusel - Minimalista con Iconos en las Esquinas */}
-        <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
-          <button 
-            onClick={prevImage}
-            className="text-white p-2 rounded-full hover:opacity-80 transition-opacity duration-300"
-          >
-            <ChevronLeft size={32} />
-          </button>
-        </div>
-
-        <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
-          <button 
-            onClick={nextImage}
-            className="text-white p-2 rounded-full hover:opacity-80 transition-opacity duration-300"
-          >
-            <ChevronRight size={32} />
-          </button>
         </div>
       </div>
     </section>
