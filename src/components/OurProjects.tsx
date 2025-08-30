@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Tag, MapPin } from 'lucide-react';
+import { X, Calendar, Tag, MapPin, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import customHome from '@/assets/custom-home.jpg';
 import multiFamily from '@/assets/multi-family.jpg';
 import structuralEngineering from '@/assets/structural-engineering.jpg';
@@ -228,9 +229,20 @@ const OurProjects = () => {
 
   return (
     <>
-      <section className="py-20 bg-engineering-white">
+      <section className="py-20 bg-engineering-white min-h-screen">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            {/* Back to Home Button */}
+            <div className="flex justify-center mb-6">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 bg-engineering-cyan text-engineering-dark px-6 py-3 rounded-lg font-semibold hover:bg-engineering-blue hover:text-white transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                Back to Home
+              </Link>
+            </div>
+            
             <h1 className="text-4xl font-bold text-engineering-dark mb-4">
               OUR PROJECTS
             </h1>

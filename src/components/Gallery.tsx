@@ -174,7 +174,7 @@ const Gallery = () => {
 
   return (
     <>
-      <section className="py-20 bg-engineering-white overflow-hidden">
+      <section id="projects" className="py-20 bg-engineering-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-engineering-dark mb-4">
