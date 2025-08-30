@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import lamarLogo from '@/assets/lamar-logo-removebg-preview.png';
 import lamarLogoLight from '@/assets/lamar-light.png';
 
@@ -26,12 +27,12 @@ const Header = () => {
   };
 
   const navItems = [
-    { label: 'Home', id: 'hero' },
-    { label: 'About Us', id: 'about' },
-    { label: 'Services', id: 'services' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'Contact Us', id: 'contact' }
+    { label: 'Home', id: 'hero', type: 'scroll' },
+    { label: 'About Us', id: 'about', type: 'scroll' },
+    { label: 'Services', id: 'services', type: 'scroll' },
+    { label: 'Our Projects', path: '/our-projects', type: 'link' },
+    { label: 'Testimonials', id: 'testimonials', type: 'scroll' },
+    { label: 'Contact Us', id: 'contact', type: 'scroll' }
   ];
 
   return (
@@ -90,15 +91,27 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-engineering-cyan/10 hover:text-engineering-cyan ${
-                  isScrolled ? 'text-engineering-dark' : 'text-engineering-white'
-                }`}
-              >
-                {item.label}
-              </button>
+              item.type === 'link' ? (
+                <Link
+                  key={item.path}
+                  to={item.path!}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-engineering-cyan/10 hover:text-engineering-cyan ${
+                    isScrolled ? 'text-engineering-dark' : 'text-engineering-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id!)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:bg-engineering-cyan/10 hover:text-engineering-cyan ${
+                    isScrolled ? 'text-engineering-dark' : 'text-engineering-white'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </nav>
 
@@ -142,13 +155,24 @@ const Header = () => {
           <div className="lg:hidden bg-engineering-white/95 backdrop-blur-lg border-t border-engineering-light/20 shadow-card">
             <nav className="py-4">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-6 py-3 text-engineering-dark hover:bg-engineering-light/50 hover:text-engineering-cyan transition-all duration-200"
-                >
-                  {item.label}
-                </button>
+                item.type === 'link' ? (
+                  <Link
+                    key={item.path}
+                    to={item.path!}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full text-left px-6 py-3 text-engineering-dark hover:bg-engineering-light/50 hover:text-engineering-cyan transition-all duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id!)}
+                    className="block w-full text-left px-6 py-3 text-engineering-dark hover:bg-engineering-light/50 hover:text-engineering-cyan transition-all duration-200"
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
               <div className="px-6 py-3 border-t border-engineering-light/30 mt-2">
                 <a href="tel:+16194734045" className="flex items-center justify-center space-x-2 text-engineering-cyan mb-3">

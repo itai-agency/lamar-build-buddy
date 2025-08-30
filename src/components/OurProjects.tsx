@@ -1,13 +1,13 @@
-import { useCallback, useState, useEffect, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Pause, X, Calendar, Tag, MapPin, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { X, Calendar, Tag, MapPin } from 'lucide-react';
 import customHome from '@/assets/custom-home.jpg';
 import multiFamily from '@/assets/multi-family.jpg';
 import structuralEngineering from '@/assets/structural-engineering.jpg';
 import civilEngineering from '@/assets/civil-engineering.jpg';
 
 interface Project {
+  id: number;
   src: string;
   alt: string;
   title: string;
@@ -22,20 +22,19 @@ interface Project {
   team: string[];
 }
 
-const Gallery = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+const OurProjects = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  
-  const galleryImages = [
-    { 
-      src: customHome, 
+
+  const projects: Project[] = [
+    {
+      id: 1,
+      src: customHome,
       alt: 'Modern custom home exterior with architectural details',
       title: 'Custom Home Construction',
       description: 'Luxury custom home with modern architectural design and premium finishes.',
-      category: 'Residential',
+      category: 'Custom Homes/Additions',
       year: '2024',
       location: 'Beverly Hills, CA',
       duration: '18 months',
@@ -44,12 +43,13 @@ const Gallery = () => {
       features: ['Smart Home Integration', 'Energy Efficient Systems', 'Custom Cabinetry', 'Premium Materials', 'Landscape Design'],
       team: ['Project Manager: Sarah Johnson', 'Architect: Michael Chen', 'Interior Designer: Lisa Rodriguez']
     },
-    { 
-      src: multiFamily, 
+    {
+      id: 2,
+      src: multiFamily,
       alt: 'Contemporary multi-family housing complex',
       title: 'Multi-Family Development',
       description: 'Elegant multi-family housing complex with community amenities.',
-      category: 'Commercial',
+      category: 'Multi-Family Housing',
       year: '2023',
       location: 'Downtown Los Angeles, CA',
       duration: '24 months',
@@ -58,12 +58,13 @@ const Gallery = () => {
       features: ['Rooftop Garden', 'Fitness Center', 'Community Lounge', 'Underground Parking', 'Smart Building Systems'],
       team: ['Project Manager: David Martinez', 'Architect: Jennifer Kim', 'Structural Engineer: Robert Wilson']
     },
-    { 
-      src: structuralEngineering, 
+    {
+      id: 3,
+      src: structuralEngineering,
       alt: 'Professional structural engineering workspace',
       title: 'Structural Engineering',
       description: 'Precision engineering for safe and innovative building designs.',
-      category: 'Engineering',
+      category: 'Commercial',
       year: '2024',
       location: 'San Francisco, CA',
       duration: '12 months',
@@ -72,12 +73,13 @@ const Gallery = () => {
       features: ['Seismic Resistance', 'Sustainable Materials', 'Advanced Modeling', 'Safety Systems', 'Innovative Design'],
       team: ['Lead Engineer: Dr. Amanda Foster', 'Structural Analyst: Carlos Mendez', 'CAD Specialist: Emily Zhang']
     },
-    { 
-      src: civilEngineering, 
+    {
+      id: 4,
+      src: civilEngineering,
       alt: 'Civil engineers reviewing construction plans',
       title: 'Civil Engineering',
       description: 'Comprehensive civil engineering solutions for infrastructure projects.',
-      category: 'Infrastructure',
+      category: 'Government/Military',
       year: '2023',
       location: 'Orange County, CA',
       duration: '36 months',
@@ -85,234 +87,222 @@ const Gallery = () => {
       details: 'Major infrastructure project including road improvements, drainage systems, and utility upgrades. The project enhanced the community infrastructure while maintaining minimal disruption to existing services. Environmental considerations were prioritized throughout the project lifecycle.',
       features: ['Road Improvements', 'Drainage Systems', 'Utility Upgrades', 'Environmental Protection', 'Traffic Management'],
       team: ['Project Director: Thomas Anderson', 'Civil Engineer: Maria Garcia', 'Environmental Specialist: James Lee']
+    },
+    {
+      id: 5,
+      src: customHome,
+      alt: 'Modern residential construction site',
+      title: 'Residential Complex',
+      description: 'Modern residential development with sustainable design.',
+      category: 'Custom Homes/Additions',
+      year: '2023',
+      location: 'Pasadena, CA',
+      duration: '20 months',
+      budget: '$12M',
+      details: 'A contemporary residential complex featuring energy-efficient design and modern amenities. The project includes 50 luxury units with smart home technology and community spaces.',
+      features: ['Smart Home Technology', 'Energy Efficient Design', 'Community Spaces', 'Luxury Finishes', 'Modern Amenities'],
+      team: ['Project Manager: Alex Thompson', 'Architect: Rachel Green', 'Interior Designer: Mark Davis']
+    },
+    {
+      id: 6,
+      src: multiFamily,
+      alt: 'Commercial office building',
+      title: 'Office Complex',
+      description: 'Modern office complex with innovative design.',
+      category: 'Commercial',
+      year: '2024',
+      location: 'Santa Monica, CA',
+      duration: '16 months',
+      budget: '$18M',
+      details: 'A state-of-the-art office complex designed for modern businesses. Features include flexible workspaces, conference facilities, and sustainable building systems.',
+      features: ['Flexible Workspaces', 'Conference Facilities', 'Sustainable Systems', 'Modern Design', 'Business Amenities'],
+      team: ['Project Manager: Lisa Chen', 'Architect: David Wilson', 'Structural Engineer: Maria Rodriguez']
+    },
+    {
+      id: 7,
+      src: structuralEngineering,
+      alt: 'Government building construction',
+      title: 'Government Center',
+      description: 'Modern government center with advanced security.',
+      category: 'Government/Military',
+      year: '2023',
+      location: 'Sacramento, CA',
+      duration: '30 months',
+      budget: '$35M',
+      details: 'A comprehensive government center designed with security and efficiency in mind. The facility includes multiple departments, secure areas, and public spaces.',
+      features: ['Advanced Security', 'Multiple Departments', 'Public Spaces', 'Secure Areas', 'Efficient Design'],
+      team: ['Project Director: James Brown', 'Security Specialist: Amanda White', 'Architect: Robert Lee']
+    },
+    {
+      id: 8,
+      src: civilEngineering,
+      alt: 'Multi-family housing development',
+      title: 'Urban Housing',
+      description: 'Urban housing development with community focus.',
+      category: 'Multi-Family Housing',
+      year: '2024',
+      location: 'Long Beach, CA',
+      duration: '22 months',
+      budget: '$20M',
+      details: 'An urban housing development designed to create a sense of community while providing modern living spaces. Features include shared amenities and green spaces.',
+      features: ['Community Focus', 'Shared Amenities', 'Green Spaces', 'Modern Living', 'Urban Design'],
+      team: ['Project Manager: Sarah Davis', 'Urban Planner: Michael Johnson', 'Landscape Architect: Emily Chen']
+    },
+    {
+      id: 9,
+      src: customHome,
+      alt: 'Luxury home addition',
+      title: 'Home Addition',
+      description: 'Luxury home addition with premium finishes.',
+      category: 'Custom Homes/Additions',
+      year: '2023',
+      location: 'Newport Beach, CA',
+      duration: '8 months',
+      budget: '$1.8M',
+      details: 'A luxury home addition that seamlessly integrates with the existing structure. Features premium materials and custom design elements.',
+      features: ['Seamless Integration', 'Premium Materials', 'Custom Design', 'Luxury Finishes', 'Quality Craftsmanship'],
+      team: ['Project Manager: Tom Wilson', 'Architect: Lisa Anderson', 'Interior Designer: Rachel Green']
+    },
+    {
+      id: 10,
+      src: multiFamily,
+      alt: 'Commercial retail center',
+      title: 'Retail Center',
+      description: 'Modern retail center with mixed-use spaces.',
+      category: 'Commercial',
+      year: '2024',
+      location: 'Irvine, CA',
+      duration: '14 months',
+      budget: '$22M',
+      details: 'A modern retail center designed to serve the community with a mix of retail, dining, and entertainment options.',
+      features: ['Mixed-Use Spaces', 'Retail Options', 'Dining Areas', 'Entertainment', 'Community Focus'],
+      team: ['Project Manager: Kevin Martinez', 'Commercial Architect: Jennifer Kim', 'Retail Specialist: David Park']
+    },
+    {
+      id: 11,
+      src: structuralEngineering,
+      alt: 'Military facility construction',
+      title: 'Military Facility',
+      description: 'Secure military facility with advanced technology.',
+      category: 'Government/Military',
+      year: '2023',
+      location: 'San Diego, CA',
+      duration: '28 months',
+      budget: '$40M',
+      details: 'A secure military facility designed with the latest technology and security measures. The facility supports various military operations and training.',
+      features: ['Advanced Technology', 'Security Measures', 'Military Operations', 'Training Facilities', 'Secure Design'],
+      team: ['Project Director: Colonel Smith', 'Security Engineer: Dr. Johnson', 'Military Specialist: Major Davis']
+    },
+    {
+      id: 12,
+      src: civilEngineering,
+      alt: 'Affordable housing complex',
+      title: 'Affordable Housing',
+      description: 'Affordable housing complex with community amenities.',
+      category: 'Multi-Family Housing',
+      year: '2024',
+      location: 'Anaheim, CA',
+      duration: '26 months',
+      budget: '$28M',
+      details: 'An affordable housing complex designed to provide quality living spaces for families. Includes community amenities and sustainable design.',
+      features: ['Affordable Design', 'Community Amenities', 'Sustainable Design', 'Family Focus', 'Quality Living'],
+      team: ['Project Manager: Maria Garcia', 'Housing Specialist: John Smith', 'Community Planner: Lisa Brown']
     }
   ];
 
-  // Autoplay functionality
-  useEffect(() => {
-    if (isPlaying) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => 
-          prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 5000);
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }
+  const categories = ['All', 'Commercial', 'Custom Homes/Additions', 'Government/Military', 'Multi-Family Housing'];
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPlaying, galleryImages.length]);
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1
-    );
-  }, [galleryImages.length]);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1
-    );
-  }, [galleryImages.length]);
-
-  const goToSlide = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
-
-  const togglePlayPause = useCallback(() => {
-    setIsPlaying(!isPlaying);
-  }, [isPlaying]);
+  const filteredProjects = selectedCategory === 'All' 
+    ? projects 
+    : projects.filter(project => project.category === selectedCategory);
 
   const openModal = useCallback((project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
-    setIsPlaying(false); // Pause autoplay when modal opens
   }, []);
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedProject(null);
-    setIsPlaying(true); // Resume autoplay when modal closes
   }, []);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (isModalOpen) {
-        if (event.key === 'Escape') {
-          closeModal();
-        }
-        return;
-      }
-
-      switch (event.key) {
-        case 'ArrowLeft':
-          prevSlide();
-          break;
-        case 'ArrowRight':
-          nextSlide();
-          break;
-        case ' ':
-          event.preventDefault();
-          togglePlayPause();
-          break;
-        case 'Enter':
-          openModal(galleryImages[currentIndex]);
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [prevSlide, nextSlide, togglePlayPause, isModalOpen, closeModal, openModal, currentIndex, galleryImages]);
 
   return (
     <>
-      <section className="py-20 bg-engineering-white overflow-hidden">
+      <section className="py-20 bg-engineering-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-engineering-dark mb-4">
-              Project Gallery
-            </h2>
+            <h1 className="text-4xl font-bold text-engineering-dark mb-4">
+              OUR PROJECTS
+            </h1>
             <p className="text-lg text-muted-foreground">
-              A showcase of our engineering excellence
+              A showcase of our engineering excellence across various sectors
             </p>
           </div>
 
-          <div className="relative max-w-6xl mx-auto">
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-
-            {/* Controls */}
-            <div className="absolute top-4 right-4 z-10 flex space-x-2">
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
               <button
-                onClick={togglePlayPause}
-                className="bg-engineering-dark/80 text-white p-2 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110"
-                aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-engineering-dark text-white border-2 border-engineering-dark'
+                    : 'bg-white text-engineering-dark border-2 border-gray-300 hover:border-engineering-dark hover:bg-gray-50'
+                }`}
               >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                {category}
               </button>
-            </div>
+            ))}
+          </div>
 
-            {/* Carousel Container */}
-            <div className="relative overflow-hidden rounded-xl shadow-2xl aspect-video">
-              <AnimatePresence mode="wait">
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <AnimatePresence>
+              {filteredProjects.map((project) => (
                 <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0, scale: 1.1 }}
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full h-full relative group cursor-pointer"
-                  onClick={() => openModal(galleryImages[currentIndex])}
+                  transition={{ duration: 0.3 }}
+                  className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  onClick={() => openModal(project)}
                 >
-                  <img
-                    src={galleryImages[currentIndex].src}
-                    alt={galleryImages[currentIndex].alt}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Overlay with project info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 text-white">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center space-x-4">
-                        <span className="bg-engineering-dark px-3 py-1 rounded-full text-sm font-medium">
-                          {galleryImages[currentIndex].category}
-                        </span>
-                        <span className="text-engineering-light text-sm">
-                          {galleryImages[currentIndex].year}
-                        </span>
-                      </div>
-                    </div>
-                    <h3 className="text-3xl font-bold mb-3">{galleryImages[currentIndex].title}</h3>
-                    <p className="text-engineering-light text-lg leading-relaxed">
-                      {galleryImages[currentIndex].description}
-                    </p>
-                    <div className="mt-4 text-sm text-engineering-light">
-                      Click to view details
-                    </div>
-                  </div>
-
-                  {/* Progress bar */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-engineering-dark/30">
-                    <motion.div
-                      className="h-full bg-engineering-dark"
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 5, ease: "linear" }}
-                      key={currentIndex}
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={project.src}
+                      alt={project.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="bg-engineering-dark px-2 py-1 rounded text-xs font-medium">
+                          {project.category}
+                        </span>
+                        <span className="text-sm opacity-80">{project.year}</span>
+                      </div>
+                      <h3 className="font-semibold text-lg mb-1">{project.title}</h3>
+                      <p className="text-sm opacity-90 line-clamp-2">{project.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Thumbnail Navigation */}
-            <div className="flex justify-center mt-6 space-x-3">
-              {galleryImages.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-110 ${
-                    index === currentIndex 
-                      ? 'ring-2 ring-engineering-dark scale-110' 
-                      : 'opacity-60 hover:opacity-100'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-16 h-12 object-cover"
-                  />
-                  {index === currentIndex && (
-                    <div className="absolute inset-0 bg-engineering-dark/20" />
-                  )}
-                </button>
               ))}
-            </div>
-
-            {/* Slide Counter */}
-            <div className="text-center mt-4 text-engineering-dark font-medium">
-              {currentIndex + 1} / {galleryImages.length}
-            </div>
-
-            {/* Keyboard shortcuts hint */}
-            <div className="text-center mt-2 text-sm text-muted-foreground">
-              Use arrow keys to navigate, spacebar to play/pause, Enter to view details
-            </div>
-
-            {/* View All Projects Button */}
-            <div className="text-center mt-8">
-              <Link
-                to="/our-projects"
-                className="inline-flex items-center gap-2 bg-engineering-dark text-white px-8 py-4 rounded-lg font-semibold hover:bg-engineering-dark/90 transition-all duration-300 hover:scale-105 shadow-lg"
-              >
-                View All Projects
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
+            </AnimatePresence>
           </div>
+
+          {/* No projects message */}
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-lg text-muted-foreground">
+                No projects found in the selected category.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -445,4 +435,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default OurProjects;
