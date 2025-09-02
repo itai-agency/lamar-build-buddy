@@ -1,223 +1,505 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Calendar, Tag, MapPin, ArrowLeft } from 'lucide-react';
+import { X, ArrowLeft, MapPin, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import customHome from '@/assets/custom-home.jpg';
-import multiFamily from '@/assets/multi-family.jpg';
-import structuralEngineering from '@/assets/structural-engineering.jpg';
-import civilEngineering from '@/assets/civil-engineering.jpg';
+import customHome from '@/assets/imagen2.jpg';
+import multiFamily from '@/assets/image6.jpg';
+import structuralEngineering from '@/assets/IMG_3190.jpg';
+import civilEngineering from '@/assets/Image5.jpg';
+import aditionalimage from '@/assets/Image5.jpg';
+import aditionalimage2 from '@/assets/IMG_2412.jpg';
+import aditionalimage3 from '@/assets/NAF1.png';
+import aditionalimage4 from '@/assets/IMG_1017.jpg';
+import aditionalimage5 from '@/assets/IMG_5738.jpg';
+import aditionalimage6 from '@/assets/image00.jpg';
+import aditionalimage7 from '@/assets/IMG_4941.jpg';
+import aditionalimage8 from '@/assets/IMG_6154.jpg';
+import aditionalimage9 from '@/assets/IMG_5862.jpg';
+import aditionalimage10 from '@/assets/IMG_0160.jpg';
+import aditionalimage11 from '@/assets/NAVAL1.png';
+import aditionalimage12 from '@/assets/IMG_0222.jpg';
+import aditionalimage13 from '@/assets/IMG_1807.jpg';
+import aditionalimage14 from '@/assets/JONES1.jpg';
+import aditionalimage15 from '@/assets/Image4.jpg';
+import aditionalimage16 from '@/assets/HAYES1.jpg';
+import aditionalimage17 from '@/assets/IMG_2292.jpg';
+import aditionalimage18 from '@/assets/GATE51.jpg';
+import aditionalimage19 from '@/assets/IMG_1346.jpg';
+import aditionalimage20 from '@/assets/IMG_5688.jpg';
+import aditionalimage21 from '@/assets/IMG_2342.jpg';
+import aditionalimage22 from '@/assets/IMG_3195.jpg';
+import aditionalimage23 from '@/assets/VD_Cam01_Final.png';
+import aditionalimage24 from '@/assets/IMG_1020.jpg';
+import aditionalimage25 from '@/assets/image7.jpg';
+import aditionalimage26 from '@/assets/JONES-42.jpg';
+import aditionalimage27 from '@/assets/VN05.jpg';
+import aditionalimage28 from '@/assets/IMG_1969.jpg';
+import aditionalimage29 from '@/assets/P1010045.jpg';
+import aditionalimage30 from '@/assets/P1010064x.jpg';
+import aditionalimage31 from '@/assets/IMG_1876.jpg';
+import aditionalimage32 from '@/assets/dBZOIn_58323_132_web_cropped_2x.jpg';
+import aditionalimage33 from '@/assets/P1010098.jpg';
+import aditionalimage34 from '@/assets/IMG_1957.jpg';
+import aditionalimage35 from '@/assets/IMG_0127.jpg';
+import aditionalimage36 from '@/assets/IMG_1885.jpg';
 
-interface Project {
+interface ProjectCard {
   id: number;
   src: string;
   alt: string;
   title: string;
   description: string;
   category: string;
-  year: string;
   location: string;
-  duration: string;
-  budget: string;
-  details: string;
-  features: string[];
-  team: string[];
+  size: string;
+  architect: string;
 }
 
 const OurProjects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectCard | null>(null);
 
-  const projects: Project[] = [
+  const projects: ProjectCard[] = [
     {
       id: 1,
       src: customHome,
-      alt: 'Modern custom home exterior with architectural details',
-      title: 'Custom Home Construction',
-      description: 'Luxury custom home with modern architectural design and premium finishes.',
-      category: 'Custom Homes/Additions',
-      year: '2024',
-      location: 'Beverly Hills, CA',
-      duration: '18 months',
-      budget: '$2.5M',
-      details: 'This stunning custom home features contemporary architecture with sustainable design elements. The project included custom cabinetry, smart home integration, and energy-efficient systems. The exterior showcases premium materials including stone veneer, custom metal work, and landscape design that complements the architectural style.',
-      features: ['Smart Home Integration', 'Energy Efficient Systems', 'Custom Cabinetry', 'Premium Materials', 'Landscape Design'],
-      team: ['Project Manager: Sarah Johnson', 'Architect: Michael Chen', 'Interior Designer: Lisa Rodriguez']
+      alt: "Modern custom home exterior with architectural details",
+      title: "MYERS RESIDENCE",
+      description: "Three-story single family residence addition and remodel,",
+      category: "Custom Homes/Additions",
+      location: "La Jolla, CA",
+      size: "4,500 sq. ft.",
+      architect: "Joza Design Studio (jozadesign.com)",
     },
     {
       id: 2,
       src: multiFamily,
-      alt: 'Contemporary multi-family housing complex',
-      title: 'Multi-Family Development',
-      description: 'Elegant multi-family housing complex with community amenities.',
-      category: 'Multi-Family Housing',
-      year: '2023',
-      location: 'Downtown Los Angeles, CA',
-      duration: '24 months',
-      budget: '$15M',
-      details: 'A modern multi-family development featuring 120 units with contemporary amenities. The project includes a rooftop garden, fitness center, community lounge, and underground parking. The design emphasizes community living with shared spaces that encourage social interaction while maintaining privacy for residents.',
-      features: ['Rooftop Garden', 'Fitness Center', 'Community Lounge', 'Underground Parking', 'Smart Building Systems'],
-      team: ['Project Manager: David Martinez', 'Architect: Jennifer Kim', 'Structural Engineer: Robert Wilson']
+      alt: "Contemporary multi-family housing complex",
+      title: "VIA GRIMALDI RESIDENCE",
+      description: "Two-story single family residence custom home with roof top deck.",
+      category: "Multi-Family Housing",
+      location: "Del Mar, CA",
+      size: "3,200 sq. ft.",
+      architect: "Joza Design Studio (jozadesign.com)",
     },
     {
       id: 3,
-      src: structuralEngineering,
-      alt: 'Professional structural engineering workspace',
-      title: 'Structural Engineering',
-      description: 'Precision engineering for safe and innovative building designs.',
-      category: 'Commercial',
-      year: '2024',
-      location: 'San Francisco, CA',
-      duration: '12 months',
-      budget: '$8M',
-      details: 'Advanced structural engineering project for a mixed-use development. The design incorporates innovative seismic-resistant systems and sustainable materials. The project required extensive analysis and modeling to ensure safety while achieving architectural goals.',
-      features: ['Seismic Resistance', 'Sustainable Materials', 'Advanced Modeling', 'Safety Systems', 'Innovative Design'],
-      team: ['Lead Engineer: Dr. Amanda Foster', 'Structural Analyst: Carlos Mendez', 'CAD Specialist: Emily Zhang']
+      src: aditionalimage2,
+      alt: "Professional structural engineering workspace",
+      title: "TENENHA– USE RESIDENCE",
+      description: "Two-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "Point Loma, CA",
+      size: " 5,500 sq. ft.",
+      architect: "Joza Design Studio (jozadesign.com)",
     },
     {
       id: 4,
-      src: civilEngineering,
-      alt: 'Civil engineers reviewing construction plans',
-      title: 'Civil Engineering',
-      description: 'Comprehensive civil engineering solutions for infrastructure projects.',
-      category: 'Government/Military',
-      year: '2023',
-      location: 'Orange County, CA',
-      duration: '36 months',
-      budget: '$25M',
-      details: 'Major infrastructure project including road improvements, drainage systems, and utility upgrades. The project enhanced the community infrastructure while maintaining minimal disruption to existing services. Environmental considerations were prioritized throughout the project lifecycle.',
-      features: ['Road Improvements', 'Drainage Systems', 'Utility Upgrades', 'Environmental Protection', 'Traffic Management'],
-      team: ['Project Director: Thomas Anderson', 'Civil Engineer: Maria Garcia', 'Environmental Specialist: James Lee']
+      src: aditionalimage3,
+      alt: "Civil engineers reviewing construction plans",
+      title: "SOLAR SUPERSTRUCTURE",
+      description: "Design-built project for a steel frame superstructure to accommodate solar panels for the air force military base.",
+      category: "Government/Military",
+      location: "El Centro, CA",
+      size: "350 sq. ft.",
+      architect: "LAMAR ENGINEERING INC.",
     },
     {
       id: 5,
-      src: customHome,
-      alt: 'Modern residential construction site',
-      title: 'Residential Complex',
-      description: 'Modern residential development with sustainable design.',
-      category: 'Custom Homes/Additions',
-      year: '2023',
-      location: 'Pasadena, CA',
-      duration: '20 months',
-      budget: '$12M',
-      details: 'A contemporary residential complex featuring energy-efficient design and modern amenities. The project includes 50 luxury units with smart home technology and community spaces.',
-      features: ['Smart Home Technology', 'Energy Efficient Design', 'Community Spaces', 'Luxury Finishes', 'Modern Amenities'],
-      team: ['Project Manager: Alex Thompson', 'Architect: Rachel Green', 'Interior Designer: Mark Davis']
+      src: aditionalimage,
+      alt: "Modern residential construction site",
+      title: "RANCHO SANTA FE",
+      description: "Two-story single family residence custom homes.",
+      category: "Custom Homes/Additions",
+      location: "Spring Valley, CA",
+      size: " 6,500 sq. ft.",
+      architect: "Clark Design Studio",
     },
     {
       id: 6,
-      src: multiFamily,
-      alt: 'Commercial office building',
-      title: 'Office Complex',
-      description: 'Modern office complex with innovative design.',
-      category: 'Commercial',
-      year: '2024',
-      location: 'Santa Monica, CA',
-      duration: '16 months',
-      budget: '$18M',
-      details: 'A state-of-the-art office complex designed for modern businesses. Features include flexible workspaces, conference facilities, and sustainable building systems.',
-      features: ['Flexible Workspaces', 'Conference Facilities', 'Sustainable Systems', 'Modern Design', 'Business Amenities'],
-      team: ['Project Manager: Lisa Chen', 'Architect: David Wilson', 'Structural Engineer: Maria Rodriguez']
+      src: aditionalimage4,
+      alt: "Commercial office building",
+      title: "PARAISO DEVELOPMENT",
+      description: "Two-story single family residence custom homes on 10 lots.",
+      category: "Custom Homes/Additions",
+      location: "Spring Valley, CA",
+      size: " 2,500 sq. ft.",
+      architect: "MC Design Studio",
     },
     {
       id: 7,
       src: structuralEngineering,
-      alt: 'Government building construction',
-      title: 'Government Center',
-      description: 'Modern government center with advanced security.',
-      category: 'Government/Military',
-      year: '2023',
-      location: 'Sacramento, CA',
-      duration: '30 months',
-      budget: '$35M',
-      details: 'A comprehensive government center designed with security and efficiency in mind. The facility includes multiple departments, secure areas, and public spaces.',
-      features: ['Advanced Security', 'Multiple Departments', 'Public Spaces', 'Secure Areas', 'Efficient Design'],
-      team: ['Project Director: James Brown', 'Security Specialist: Amanda White', 'Architect: Robert Lee']
+      alt: "Government building construction",
+      title: "PANORAMA RESIDENCE",
+      description: "Three-story single family residence custom home.",
+      category: "Custom Homes/Additions",
+      location: " La Mesa, CA",
+      size: "8,500 sq. ft.",
+      architect: "Taylor Development Inc.",
     },
     {
       id: 8,
-      src: civilEngineering,
-      alt: 'Multi-family housing development',
-      title: 'Urban Housing',
-      description: 'Urban housing development with community focus.',
-      category: 'Multi-Family Housing',
-      year: '2024',
-      location: 'Long Beach, CA',
-      duration: '22 months',
-      budget: '$20M',
-      details: 'An urban housing development designed to create a sense of community while providing modern living spaces. Features include shared amenities and green spaces.',
-      features: ['Community Focus', 'Shared Amenities', 'Green Spaces', 'Modern Living', 'Urban Design'],
-      team: ['Project Manager: Sarah Davis', 'Urban Planner: Michael Johnson', 'Landscape Architect: Emily Chen']
+      src: aditionalimage5,
+      alt: "Two-story hillside single family custom home",
+      title: "MONTECITOS RESIDENCE",
+      description: "Two-story hillside single family custom home.",
+      category: "Custom Homes/Additions",
+      location: "Los Angeles, CA",
+      size: "2,500 sq. ft.",
+      architect: "Joza Design Studio",
     },
     {
       id: 9,
-      src: customHome,
-      alt: 'Luxury home addition',
-      title: 'Home Addition',
-      description: 'Luxury home addition with premium finishes.',
-      category: 'Custom Homes/Additions',
-      year: '2023',
-      location: 'Newport Beach, CA',
-      duration: '8 months',
-      budget: '$1.8M',
-      details: 'A luxury home addition that seamlessly integrates with the existing structure. Features premium materials and custom design elements.',
-      features: ['Seamless Integration', 'Premium Materials', 'Custom Design', 'Luxury Finishes', 'Quality Craftsmanship'],
-      team: ['Project Manager: Tom Wilson', 'Architect: Lisa Anderson', 'Interior Designer: Rachel Green']
+      src: aditionalimage6,
+      alt: "Two-story single family residence addition and remodel",
+      title: "MOUNT SOLEDAD RESIDENCE",
+      description: "Two-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "La Jolla, CA",
+      size: "3,100 sq. ft.",
+      architect: "Ell Design Studio",
     },
     {
       id: 10,
-      src: multiFamily,
-      alt: 'Commercial retail center',
-      title: 'Retail Center',
-      description: 'Modern retail center with mixed-use spaces.',
-      category: 'Commercial',
-      year: '2024',
-      location: 'Irvine, CA',
-      duration: '14 months',
-      budget: '$22M',
-      details: 'A modern retail center designed to serve the community with a mix of retail, dining, and entertainment options.',
-      features: ['Mixed-Use Spaces', 'Retail Options', 'Dining Areas', 'Entertainment', 'Community Focus'],
-      team: ['Project Manager: Kevin Martinez', 'Commercial Architect: Jennifer Kim', 'Retail Specialist: David Park']
+      src: aditionalimage7,
+      alt: "One-story commercial retail building",
+      title: "MISSION SHOPPING CENTER",
+      description: "One-story commercial retail building.",
+      category: "Commercial",
+      location: "Escondido, CA",
+      size: "8,000 sq. ft.",
+      architect: "Arkisource",
     },
     {
       id: 11,
-      src: structuralEngineering,
-      alt: 'Military facility construction',
-      title: 'Military Facility',
-      description: 'Secure military facility with advanced technology.',
-      category: 'Government/Military',
-      year: '2023',
-      location: 'San Diego, CA',
-      duration: '28 months',
-      budget: '$40M',
-      details: 'A secure military facility designed with the latest technology and security measures. The facility supports various military operations and training.',
-      features: ['Advanced Technology', 'Security Measures', 'Military Operations', 'Training Facilities', 'Secure Design'],
-      team: ['Project Director: Colonel Smith', 'Security Engineer: Dr. Johnson', 'Military Specialist: Major Davis']
+      src: aditionalimage8,
+      alt: "Detached garage with rooftop deck",
+      title: "MELCHUM GARAGE",
+      description: "One-story CMU block wall detached garage with rooftop deck.",
+      category: "Custom Homes/Additions",
+      location: "Point Loma, CA",
+      size: "850 sq. ft.",
+      architect: "ENE-T Studio",
     },
     {
       id: 12,
-      src: civilEngineering,
-      alt: 'Affordable housing complex',
-      title: 'Affordable Housing',
-      description: 'Affordable housing complex with community amenities.',
-      category: 'Multi-Family Housing',
-      year: '2024',
-      location: 'Anaheim, CA',
-      duration: '26 months',
-      budget: '$28M',
-      details: 'An affordable housing complex designed to provide quality living spaces for families. Includes community amenities and sustainable design.',
-      features: ['Affordable Design', 'Community Amenities', 'Sustainable Design', 'Family Focus', 'Quality Living'],
-      team: ['Project Manager: Maria Garcia', 'Housing Specialist: John Smith', 'Community Planner: Lisa Brown']
-    }
+      src: aditionalimage9,
+      alt: "Storefront design",
+      title: "MAC STORE FRONT",
+      description: "Design of Mac store front in commercial center.",
+      category: "Commercial",
+      location: "Bonita, CA",
+      size: "—",
+      architect: "—",
+    },
+    {
+      id: 13,
+      src: aditionalimage10,
+      alt: "Two-story residence remodel",
+      title: "LORING RESIDENCE",
+      description: "Two-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "Pacific Beach, CA",
+      size: "2,900 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 14,
+      src: aditionalimage11,
+      alt: "Steel frame loading dock and canopy",
+      title: "LOADING TRUCKS PLATFORM",
+      description: "Steel frame loading dock and canopy.",
+      category: "Commercial",
+      location: "Coronado, CA",
+      size: "450 sq. ft.",
+      architect: "LAMAR Engineering Inc.",
+    },
+    {
+      id: 15,
+      src: aditionalimage12,
+      alt: "Commercial brewery remodel",
+      title: "LITTLE MISS BREWING",
+      description: "One-story commercial remodel for proposed brewery.",
+      category: "Commercial",
+      location: "San Diego, CA",
+      size: "3,000 sq. ft.",
+      architect: "Modern Forms Design",
+    },
+    {
+      id: 16,
+      src: aditionalimage13,
+      alt: "Residence addition and remodel",
+      title: "LEE RESIDENCE",
+      description: "Two-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "National City, CA",
+      size: "2,200 sq. ft.",
+      architect: "DLAM Design",
+    },
+    {
+      id: 17,
+      src: aditionalimage14,
+      alt: "Residence remodel with rooftop deck",
+      title: "JONES RESIDENCE",
+      description: "Two-story single family residence addition and remodel with rooftop deck.",
+      category: "Custom Homes/Additions",
+      location: "Point Loma, CA",
+      size: "2,000 sq. ft.",
+      architect: "Modern Forms Design",
+    },
+    {
+      id: 17,
+      src: aditionalimage15,
+      alt: "Residence remodel with rooftop deck",
+      title: "JAUREGUI RESIDENCE",
+      description: "Two-story single family residence addition and remodel with attached one-story warehouse building",
+      category: "Commercial",
+      location: " Chula Vista, CA",
+      size: "2,500 sq. ft. (Residential) ; 2,000 sq. ft. (Commercial)",
+      architect: "DLAM Design (dlamdesign.com)",
+    },
+    {
+      id: 18,
+      src: aditionalimage16,
+      alt: "Multi-family apartment complex",
+      title: "HAYES RESIDENCE",
+      description: "Three-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "San Diego, CA",
+      size: "7,500 sq. ft.",
+      architect: "Studio E Architects",
+    },
+    {
+      id: 19,
+      src: aditionalimage17,
+      alt: "Two-story single family residence addition and remodel",
+      title: "GOLDEN HILLS RESIDENCE",
+      description: "Two-story single family residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "San Diego, CA",
+      size: "2,500 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 20,
+      src: aditionalimage18,
+      alt: "Two-story single family custom home",
+      title: "GATE 5 RESIDENCE",
+      description: "Two-story single family custom home.",
+      category: "Custom Homes/Additions",
+      location: "Chula Vista, CA",
+      size: "12,500 sq. ft.",
+      architect: "Focus, Inc.",
+    },
+    {
+      id: 21,
+      src: aditionalimage19,
+      alt: "Two-story single family custom home",
+      title: "GATE 3 RESIDENCE",
+      description: "Two-story single family custom home.",
+      category: "Custom Homes/Additions",
+      location: "Chula Vista, CA",
+      size: "12,000 sq. ft.",
+      architect: "Focus, Inc.",
+    },
+    {
+      id: 22,
+      src: aditionalimage20,
+      alt: "Three-story apartment units",
+      title: "FELSPAR APARTMENT",
+      description: "Three-story apartment units.",
+      category: "Multi-Family Housing",
+      location: "Pacific Beach, CA",
+      size: "9,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 23,
+      src:  aditionalimage21,
+      alt: "Two-story single family custom home",
+      title: "F STREET RESIDENCE",
+      description: "Two-story single family custom home.",
+      category: "Custom Homes/Additions",
+      location: "Coronado, CA",
+      size: "3,200 sq. ft.",
+      architect: "Focus, Inc.",
+    },
+    {
+      id: 24,
+      src:  aditionalimage22,
+      alt: "Two-story historical residence addition and remodel",
+      title: "BURKE RESIDENCE",
+      description: "Two-story historical residence addition and remodel.",
+      category: "Custom Homes/Additions",
+      location: "San Diego, CA",
+      size: "3,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 25,
+      src: aditionalimage23,
+      alt: "Two-story custom home with rooftop deck",
+      title: "VIA DONADA RESIDENCE",
+      description: "Two-story custom home with rooftop deck.",
+      category: "Custom Homes/Additions",
+      location: "Del Mar, CA",
+      size: "4,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 26,
+      src: aditionalimage24,
+      alt: "Two-story custom track homes",
+      title: "PARAISO TRACK HOMES",
+      description: "Two-story custom track homes.",
+      category: "Multi-Family Housing",
+      location: "Spring Valley, CA",
+      size: "2,500 sq. ft.",
+      architect: "MC4 Designs",
+    },
+    {
+      id: 27,
+      src:  aditionalimage25,
+      alt: "One-story lube oil center with underground basement",
+      title: "BONITA LUBE OIL CENTER",
+      description: "One-story lube oil center with underground basement.",
+      category: "Commercial",
+      location: "Chula Vista, CA",
+      size: "1,500 sq. ft.",
+      architect: "—",
+    },
+    {
+      id: 28,
+      src:  aditionalimage26,
+      alt: "Three-story custom home in progress",
+      title: "JONES RESIDENCE",
+      description: "Three-story custom home in progress.",
+      category: "Custom Homes/Additions",
+      location: "San Diego, CA",
+      size: "3,200 sq. ft.",
+      architect: "Modern Forms Design",
+    },
+    {
+      id: 29,
+      src:  aditionalimage27,
+      alt: "Three-story community center",
+      title: "VILLA NUEVA COMMUNITY CENTER",
+      description: "Three-story community center.",
+      category: "Government/Military",
+      location: "San Ysidro, CA",
+      size: "30,000 sq. ft.",
+      architect: "Arki Source",
+    },
+    {
+      id: 30,
+      src:  aditionalimage28,
+      alt: "Two-story custom home with detached garage",
+      title: "VIA GRIMALDI RESIDENCE",
+      description: "Two-story custom home with detached garage.",
+      category: "Custom Homes/Additions",
+      location: "Solana Beach, CA",
+      size: "3,500 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 31,
+      src:  aditionalimage29,
+      alt: "Three two-story town homes",
+      title: "SMYTHE TOWN HOMES",
+      description: "Three two-story town homes.",
+      category: "Multi-Family Housing",
+      location: "San Ysidro, CA",
+      size: "5,400 sq. ft.",
+      architect: "—",
+    },
+    {
+      id: 32,
+      src:  aditionalimage30,
+      alt: "Two-story custom home",
+      title: "RABAN RESIDENCE",
+      description: "Two-story custom home.",
+      category: "Custom Homes/Additions",
+      location: "Campo, CA",
+      size: "10,000 sq. ft.",
+      architect: "—",
+    },
+    {
+      id: 33,
+      src:  aditionalimage31,
+      alt: "Three-story custom home with roof deck",
+      title: "MYERS RESIDENCE",
+      description: "Three-story custom home with roof deck.",
+      category: "Custom Homes/Additions",
+      location: "La Jolla, CA",
+      size: "3,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 34,
+      src:  aditionalimage32,
+      alt: "Two-story custom home.",
+      title: "JELLET RESIDENCE",
+      description: "Two-story custom home.",
+      category: "Custom Homes/Additions",
+      location: "San Diego, CA",
+      size: "4,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 35,
+      src:  aditionalimage33,
+      alt: "Three-story condominiums",
+      title: "HILLTRESS CONDOS",
+      description: "Three-story condominiums.",
+      category: "Multi-Family Housing",
+      location: "San Diego, CA",
+      size: "6,000 sq. ft.",
+      architect: "—",
+    },
+    {
+      id: 36,
+      src:  aditionalimage34,
+      alt: "Two-story custom home",
+      title: "GRANADOS RESIDENCE",
+      description: "Two-story custom home.",
+      category: "Custom Homes/Additions",
+      location: "Solana Beach, CA",
+      size: "6,000 sq. ft.",
+      architect: "Joza Design Studio",
+    },
+    {
+      id: 37,
+      src:  aditionalimage35,
+      alt: "Three-story custom home on hillside",
+      title: "DEL GROVE CUSTOM HOMES",
+      description: "Three-story custom home on hillside.",
+      category: "Custom Homes/Additions",
+      location: "Lemon Grove, CA",
+      size: "2,800 sq. ft.",
+      architect: "—",
+    },
+    {
+      id: 38,
+      src: aditionalimage36,
+      alt: "Front tower and rear deck addition to existing residence",
+      title: "ARTHUR RESIDENCE",
+      description: "Front tower and rear deck addition to existing residence.",
+      category: "Custom Homes/Additions",
+      location: "La Jolla, CA",
+      size: "2,500 sq. ft.",
+      architect: "—",
+    },
   ];
+  
 
   const categories = ['All', 'Commercial', 'Custom Homes/Additions', 'Government/Military', 'Multi-Family Housing'];
 
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter((project) => project.category === selectedCategory);
 
-  const openModal = useCallback((project: Project) => {
+  const openModal = useCallback((project: ProjectCard) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   }, []);
@@ -232,7 +514,6 @@ const OurProjects = () => {
       <section className="py-20 bg-engineering-white min-h-screen">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            {/* Back to Home Button */}
             <div className="flex justify-center mb-6">
               <Link
                 to="/"
@@ -242,7 +523,7 @@ const OurProjects = () => {
                 Back to Home
               </Link>
             </div>
-            
+
             <h1 className="text-4xl font-bold text-engineering-dark mb-4">
               OUR PROJECTS
             </h1>
@@ -251,7 +532,6 @@ const OurProjects = () => {
             </p>
           </div>
 
-          {/* Category Filters */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((category) => (
               <button
@@ -268,7 +548,6 @@ const OurProjects = () => {
             ))}
           </div>
 
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <AnimatePresence>
               {filteredProjects.map((project) => (
@@ -288,16 +567,12 @@ const OurProjects = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  
-                  {/* Overlay */}
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="bg-engineering-dark px-2 py-1 rounded text-xs font-medium">
-                          {project.category}
-                        </span>
-                        <span className="text-sm opacity-80">{project.year}</span>
-                      </div>
+                      <span className="bg-engineering-dark px-2 py-1 rounded text-xs font-medium">
+                        {project.category}
+                      </span>
                       <h3 className="font-semibold text-lg mb-1">{project.title}</h3>
                       <p className="text-sm opacity-90 line-clamp-2">{project.description}</p>
                     </div>
@@ -307,7 +582,6 @@ const OurProjects = () => {
             </AnimatePresence>
           </div>
 
-          {/* No projects message */}
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
               <p className="text-lg text-muted-foreground">
@@ -318,7 +592,6 @@ const OurProjects = () => {
         </div>
       </section>
 
-      {/* Project Details Modal */}
       <AnimatePresence>
         {isModalOpen && selectedProject && (
           <motion.div
@@ -333,10 +606,9 @@ const OurProjects = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className="relative bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 onClick={closeModal}
                 className="absolute top-4 right-4 z-10 bg-engineering-dark text-white p-2 rounded-full hover:bg-engineering-dark/80 transition-colors"
@@ -345,9 +617,7 @@ const OurProjects = () => {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Modal content */}
               <div className="relative">
-                {/* Project image */}
                 <div className="relative h-64 md:h-80 overflow-hidden rounded-t-xl">
                   <img
                     src={selectedProject.src}
@@ -357,19 +627,11 @@ const OurProjects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
 
-                {/* Project details */}
                 <div className="p-6 md:p-8">
-                  {/* Header */}
                   <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="bg-engineering-dark text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {selectedProject.category}
-                      </span>
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <Calendar className="w-4 h-4" />
-                        <span className="text-sm">{selectedProject.year}</span>
-                      </div>
-                    </div>
+                    <span className="bg-engineering-dark text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {selectedProject.category}
+                    </span>
                     <h2 className="text-3xl md:text-4xl font-bold text-engineering-dark mb-3">
                       {selectedProject.title}
                     </h2>
@@ -378,63 +640,27 @@ const OurProjects = () => {
                     </p>
                   </div>
 
-                  {/* Project info grid */}
-                  <div className="grid md:grid-cols-2 gap-6 mb-8">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <MapPin className="w-5 h-5 text-engineering-dark" />
-                        <div>
-                          <p className="font-medium text-engineering-dark">Location</p>
-                          <p className="text-muted-foreground">{selectedProject.location}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Calendar className="w-5 h-5 text-engineering-dark" />
-                        <div>
-                          <p className="font-medium text-engineering-dark">Duration</p>
-                          <p className="text-muted-foreground">{selectedProject.duration}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Tag className="w-5 h-5 text-engineering-dark" />
-                        <div>
-                          <p className="font-medium text-engineering-dark">Budget</p>
-                          <p className="text-muted-foreground">{selectedProject.budget}</p>
-                        </div>
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-5 h-5 text-engineering-dark" />
+                      <div>
+                        <p className="font-medium text-engineering-dark">Location</p>
+                        <p className="text-muted-foreground">{selectedProject.location}</p>
                       </div>
                     </div>
-
-                    <div>
-                      <h3 className="font-semibold text-engineering-dark mb-3">Key Features</h3>
-                      <ul className="space-y-2">
-                        {selectedProject.features.map((feature: string, index: number) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-engineering-dark rounded-full" />
-                            <span className="text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="flex items-center gap-3">
+                      <Tag className="w-5 h-5 text-engineering-dark" />
+                      <div>
+                        <p className="font-medium text-engineering-dark">Size</p>
+                        <p className="text-muted-foreground">{selectedProject.size}</p>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Detailed description */}
-                  <div className="mb-8">
-                    <h3 className="font-semibold text-engineering-dark mb-3">Project Details</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.details}
-                    </p>
-                  </div>
-
-                  {/* Team */}
-                  <div>
-                    <h3 className="font-semibold text-engineering-dark mb-3">Project Team</h3>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {selectedProject.team.map((member: string, index: number) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-engineering-dark rounded-full" />
-                          <span className="text-muted-foreground text-sm">{member}</span>
-                        </div>
-                      ))}
+                    <div className="flex items-center gap-3">
+                      <Tag className="w-5 h-5 text-engineering-dark" />
+                      <div>
+                        <p className="font-medium text-engineering-dark">Architect</p>
+                        <p className="text-muted-foreground">{selectedProject.architect}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
