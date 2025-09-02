@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import customHome from '@/assets/imagen2.jpg';
 import multiFamily from '@/assets/image6.jpg';
 import structuralEngineering from '@/assets/IMG_3190.jpg';
-import civilEngineering from '@/assets/Image5.jpg';
 import aditionalimage from '@/assets/Image5.jpg';
 import aditionalimage2 from '@/assets/IMG_2412.jpg';
 import aditionalimage3 from '@/assets/NAF1.png';
