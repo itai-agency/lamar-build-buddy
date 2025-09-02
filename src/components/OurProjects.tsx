@@ -248,7 +248,7 @@ const OurProjects = () => {
       architect: "Modern Forms Design",
     },
     {
-      id: 17,
+      id: 18,
       src: aditionalimage15,
       alt: "Residence remodel with rooftop deck",
       title: "JAUREGUI RESIDENCE",
@@ -259,7 +259,7 @@ const OurProjects = () => {
       architect: "DLAM Design (dlamdesign.com)",
     },
     {
-      id: 18,
+      id: 19,
       src: aditionalimage16,
       alt: "Multi-family apartment complex",
       title: "HAYES RESIDENCE",
@@ -270,7 +270,7 @@ const OurProjects = () => {
       architect: "Studio E Architects",
     },
     {
-      id: 19,
+      id: 20,
       src: aditionalimage17,
       alt: "Two-story single family residence addition and remodel",
       title: "GOLDEN HILLS RESIDENCE",
@@ -281,7 +281,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 20,
+      id: 21,
       src: aditionalimage18,
       alt: "Two-story single family custom home",
       title: "GATE 5 RESIDENCE",
@@ -292,7 +292,7 @@ const OurProjects = () => {
       architect: "Focus, Inc.",
     },
     {
-      id: 21,
+      id: 22,
       src: aditionalimage19,
       alt: "Two-story single family custom home",
       title: "GATE 3 RESIDENCE",
@@ -303,7 +303,7 @@ const OurProjects = () => {
       architect: "Focus, Inc.",
     },
     {
-      id: 22,
+      id: 23,
       src: aditionalimage20,
       alt: "Three-story apartment units",
       title: "FELSPAR APARTMENT",
@@ -314,7 +314,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 23,
+      id: 24,
       src:  aditionalimage21,
       alt: "Two-story single family custom home",
       title: "F STREET RESIDENCE",
@@ -325,7 +325,7 @@ const OurProjects = () => {
       architect: "Focus, Inc.",
     },
     {
-      id: 24,
+      id: 25,
       src:  aditionalimage22,
       alt: "Two-story historical residence addition and remodel",
       title: "BURKE RESIDENCE",
@@ -336,7 +336,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 25,
+      id: 26,
       src: aditionalimage23,
       alt: "Two-story custom home with rooftop deck",
       title: "VIA DONADA RESIDENCE",
@@ -347,7 +347,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 26,
+      id: 27,
       src: aditionalimage24,
       alt: "Two-story custom track homes",
       title: "PARAISO TRACK HOMES",
@@ -358,7 +358,7 @@ const OurProjects = () => {
       architect: "MC4 Designs",
     },
     {
-      id: 27,
+      id: 28,
       src:  aditionalimage25,
       alt: "One-story lube oil center with underground basement",
       title: "BONITA LUBE OIL CENTER",
@@ -369,7 +369,7 @@ const OurProjects = () => {
       architect: "—",
     },
     {
-      id: 28,
+      id: 29,
       src:  aditionalimage26,
       alt: "Three-story custom home in progress",
       title: "JONES RESIDENCE",
@@ -380,7 +380,7 @@ const OurProjects = () => {
       architect: "Modern Forms Design",
     },
     {
-      id: 29,
+      id: 30,
       src:  aditionalimage27,
       alt: "Three-story community center",
       title: "VILLA NUEVA COMMUNITY CENTER",
@@ -391,7 +391,7 @@ const OurProjects = () => {
       architect: "Arki Source",
     },
     {
-      id: 30,
+      id: 31,
       src:  aditionalimage28,
       alt: "Two-story custom home with detached garage",
       title: "VIA GRIMALDI RESIDENCE",
@@ -402,7 +402,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 31,
+      id: 32,
       src:  aditionalimage29,
       alt: "Three two-story town homes",
       title: "SMYTHE TOWN HOMES",
@@ -413,7 +413,7 @@ const OurProjects = () => {
       architect: "—",
     },
     {
-      id: 32,
+      id: 33,
       src:  aditionalimage30,
       alt: "Two-story custom home",
       title: "RABAN RESIDENCE",
@@ -424,7 +424,7 @@ const OurProjects = () => {
       architect: "—",
     },
     {
-      id: 33,
+      id: 34,
       src:  aditionalimage31,
       alt: "Three-story custom home with roof deck",
       title: "MYERS RESIDENCE",
@@ -435,7 +435,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 34,
+      id: 35,
       src:  aditionalimage32,
       alt: "Two-story custom home.",
       title: "JELLET RESIDENCE",
@@ -446,7 +446,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 35,
+      id: 36,
       src:  aditionalimage33,
       alt: "Three-story condominiums",
       title: "HILLTRESS CONDOS",
@@ -457,7 +457,7 @@ const OurProjects = () => {
       architect: "—",
     },
     {
-      id: 36,
+      id: 37,
       src:  aditionalimage34,
       alt: "Two-story custom home",
       title: "GRANADOS RESIDENCE",
@@ -468,7 +468,7 @@ const OurProjects = () => {
       architect: "Joza Design Studio",
     },
     {
-      id: 37,
+      id: 38,
       src:  aditionalimage35,
       alt: "Three-story custom home on hillside",
       title: "DEL GROVE CUSTOM HOMES",
@@ -479,7 +479,7 @@ const OurProjects = () => {
       architect: "—",
     },
     {
-      id: 38,
+      id: 39,
       src: aditionalimage36,
       alt: "Front tower and rear deck addition to existing residence",
       title: "ARTHUR RESIDENCE",
@@ -505,9 +505,9 @@ const OurProjects = () => {
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
-    setSelectedProject(null);
+    setSelectedProject(null); // Restablecer el estado correctamente
   }, []);
-
+  
   return (
     <>
       <section className="py-20 bg-engineering-white min-h-screen">
