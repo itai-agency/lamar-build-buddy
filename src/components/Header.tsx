@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
-import lamarLogo from '@/assets/lamar-logo-removebg-preview.png';
-import lamarLogoLight from '@/assets/lamar-light.png';
+import lamarLogo from '@/assets/lamarlogoblue2.png';
+import lamarLogoLight from '@/assets/lamarlogowhite3.png';
 
 interface HeaderProps {
   darkMode?: boolean;
