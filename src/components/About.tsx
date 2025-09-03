@@ -1,5 +1,5 @@
 import { Award, Users, Calendar, Target } from 'lucide-react';
-import aboutEngineer from '@/assets/image8.jpg';
+import aboutEngineer from '@/assets/vista-frontal-personas-sonrientes-con-chalecos-de-seguridad-de-neon.png';
 
 const About = () => {
   const stats = [

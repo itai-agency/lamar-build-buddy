@@ -32,114 +32,111 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-engineering-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-engineering-dark mb-4">
-            Contact Us
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're happy to answer any questions you have or provide you with an estimate. 
-            Just send us a message in the form below with any questions you may have.
-          </p>
-        </div>
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-engineering-dark mb-4">
+        Contact Us
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        We're happy to answer any questions you have or provide you with an estimate. 
+        Just send us a message in the form below with any questions you may have.
+      </p>
+    </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl text-engineering-dark">
-                Get In Touch
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="subject"
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Your Message"
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+    {/* Formulario y Contact Information juntos en una tarjeta horizontal */}
+    <Card className="shadow-lg rounded-md">
+      <CardContent className="p-8">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Formulario de Contacto */}
+          <div className="lg:w-1/2 space-y-6">
+            <h3 className="text-2xl font-semibold text-engineering-dark mb-6">Get In Touch</h3>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <Input
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  name="subject"
+                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div>
+                <Textarea
+                  name="message"
+                  placeholder="Your Message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                Send Message
+              </Button>
+            </form>
+          </div>
 
-          <div className="space-y-8">
-            <Card>
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold text-engineering-dark mb-6">
-                  Contact Information
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <Phone className="text-primary w-6 h-6" />
-                    <a 
-                      href="tel:+16194734045" 
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      (619) 473-4045
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Mail className="text-primary w-6 h-6" />
-                    <a 
-                      href="mailto:llabrada@lamareng.com" 
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      llabrada@lamareng.com
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <Facebook className="text-primary w-6 h-6" />
-                    <a 
-                      href="https://www.facebook.com/lamareng" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      Follow us on Facebook
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Información de Contacto */}
+          <div className="lg:w-1/2 space-y-6 flex flex-col items-center justify-center">
+            <h3 className="text-2xl font-semibold text-engineering-dark mb-6">Contact Information</h3>
+            <div className="space-y-4 text-center">
+              <div className="flex items-center space-x-4 justify-center">
+                <Phone className="text-primary w-6 h-6" />
+                <a 
+                  href="tel:+16194734045" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  (619) 473-4045
+                </a>
+              </div>
+              <div className="flex items-center space-x-4 justify-center">
+                <Mail className="text-primary w-6 h-6" />
+                <a 
+                  href="mailto:llabrada@lamareng.com" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  llabrada@lamareng.com
+                </a>
+              </div>
+              <div className="flex items-center space-x-4 justify-center">
+                <Facebook className="text-primary w-6 h-6" />
+                <a 
+                  href="https://www.facebook.com/lamareng" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Follow us on Facebook
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </CardContent>
+    </Card>
+  </div>
+</section>
+
+
   );
 };
 
