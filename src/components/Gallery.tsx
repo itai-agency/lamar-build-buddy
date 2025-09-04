@@ -223,8 +223,6 @@ const Gallery = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Flechas móviles eliminadas */}
-            
             {/* Controls */}
             <div className="absolute top-4 right-4 z-10 flex space-x-2">
               <button
@@ -255,16 +253,16 @@ const Gallery = () => {
                   />
 
                   {/* Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 text-white">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 sm:p-8 text-white">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="bg-engineering-dark px-3 py-1 rounded-full text-xs sm:text-xs md:text-sm">
                         {galleryImages[currentIndex].category}
                       </span>
                     </div>
-                    <h3 className="text-3xl sm:text-2xl md:text-4xl font-bold mb-3">
+                    <h3 className="text-xl sm:text-2xl md:text-4xl font-bold mb-3">
                       {galleryImages[currentIndex].title}
                     </h3>
-                    <p className="text-engineering-light text-lg sm:text-sm md:text-xl leading-relaxed">
+                    <p className="text-engineering-light text-sm sm:text-sm md:text-xl leading-relaxed">
                       {galleryImages[currentIndex].description}
                     </p>
                     <div className="mt-4 text-sm sm:text-base md:text-lg text-engineering-light">
