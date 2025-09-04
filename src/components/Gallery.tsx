@@ -34,7 +34,7 @@ const Gallery = () => {
   const galleryImages: Project[] = [
     {
       src: customHome,
-      alt: 'Modern custom home exterior with architectural details',
+      alt: 'Modern custom home exterior',
       title: 'RANCHO SANTA FE',
       description: 'Two-story single family custom home.',
       category: 'Residential',
@@ -44,7 +44,7 @@ const Gallery = () => {
     },
     {
       src: multiFamily,
-      alt: 'Two-story residence addition/remodel with attached warehouse',
+      alt: 'Two-story residence',
       title: 'JAUREGUI RESIDENCE',
       description:
         'Two-story single family residence.',
@@ -55,7 +55,7 @@ const Gallery = () => {
     },
     {
       src: structuralEngineering,
-      alt: 'Two-story custom home with rooftop deck',
+      alt: 'Two-story custom home',
       title: 'VIA GRIMALDI RESIDENCE',
       description: 'Two-story custom home.',
       category: 'Residential',
