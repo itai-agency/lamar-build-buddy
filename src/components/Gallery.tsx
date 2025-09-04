@@ -196,7 +196,7 @@ const Gallery = () => {
     <>
       <section id="projects" className="py-20 bg-engineering-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-engineering-dark mb-4">
               Project Gallery
             </h2>
