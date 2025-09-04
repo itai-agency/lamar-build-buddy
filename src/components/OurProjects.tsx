@@ -516,7 +516,7 @@ const OurProjects = () => {
             <div className="flex justify-center mb-6">
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 bg-engineering-cyan text-engineering-dark px-6 py-3 rounded-lg font-semibold hover:bg-engineering-blue hover:text-white transition-all duration-300 hover:scale-105 shadow-lg"
+                className="inline-flex items-center gap-2 bg-engineering-cyan text-engineering-white px-6 py-3 rounded-lg font-semibold hover:bg-engineering-blue hover:text-white transition-all duration-300 hover:scale-105 shadow-lg"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Back to Home
