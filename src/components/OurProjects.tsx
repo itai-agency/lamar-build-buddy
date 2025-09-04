@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowLeft, MapPin, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -86,7 +86,7 @@ const OurProjects = () => {
       id: 3,
       src: aditionalimage2,
       alt: "Professional structural engineering workspace",
-      title: "TENENHA– USE RESIDENCE",
+      title: "TENENHAUS RESIDENCE",
       description: "Two-story single family residence addition and remodel.",
       category: "Custom Homes/Additions",
       location: "Point Loma, CA",
@@ -507,6 +507,19 @@ const OurProjects = () => {
     setIsModalOpen(false);
     setSelectedProject(null); // Restablecer el estado correctamente
   }, []);
+ 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isModalOpen) {
+        event.preventDefault();
+        closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen, closeModal]);
   
   return (
     <>
@@ -558,12 +571,22 @@ const OurProjects = () => {
                   transition={{ duration: 0.3 }}
                   className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                   onClick={() => openModal(project)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openModal(project);
+                    }
+                  }}
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={project.src}
                       alt={project.alt}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -606,6 +629,9 @@ const OurProjects = () => {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="relative bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-modal-title"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -631,7 +657,7 @@ const OurProjects = () => {
                     <span className="bg-engineering-dark text-white px-3 py-1 rounded-full text-sm font-medium">
                       {selectedProject.category}
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-engineering-dark mb-3">
+                    <h2 id="project-modal-title" className="text-3xl md:text-4xl font-bold text-engineering-dark mb-3">
                       {selectedProject.title}
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
@@ -644,21 +670,21 @@ const OurProjects = () => {
                       <MapPin className="w-5 h-5 text-engineering-dark" />
                       <div>
                         <p className="font-medium text-engineering-dark">Location</p>
-                        <p className="text-muted-foreground">{selectedProject.location}</p>
+                        <p className="text-muted-foreground">{selectedProject.location.trim()}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <Tag className="w-5 h-5 text-engineering-dark" />
                       <div>
                         <p className="font-medium text-engineering-dark">Size</p>
-                        <p className="text-muted-foreground">{selectedProject.size}</p>
+                        <p className="text-muted-foreground">{selectedProject.size.trim()}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <Tag className="w-5 h-5 text-engineering-dark" />
                       <div>
                         <p className="font-medium text-engineering-dark">Architect</p>
-                        <p className="text-muted-foreground">{selectedProject.architect}</p>
+                        <p className="text-muted-foreground">{selectedProject.architect.trim()}</p>
                       </div>
                     </div>
                   </div>
