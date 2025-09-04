@@ -43,7 +43,7 @@ const Gallery = () => {
       alt: 'Two-story residence addition/remodel with attached warehouse',
       title: 'JAUREGUI RESIDENCE',
       description:
-        'Two-story single family residence addition and remodel with attached one-story warehouse building.',
+        'Two-story single family residence.',
       category: 'Residential',
       location: 'Chula Vista, CA',
       size: '2,500 + 2,000 sq. ft.',
@@ -53,7 +53,7 @@ const Gallery = () => {
       src: structuralEngineering,
       alt: 'Two-story custom home with rooftop deck',
       title: 'VIA GRIMALDI RESIDENCE',
-      description: 'Two-story custom home with rooftop deck.',
+      description: 'Two-story custom home.',
       category: 'Residential',
       location: 'Solana Beach, CA',
       size: '3,500 sq. ft.',
@@ -71,7 +71,6 @@ const Gallery = () => {
     },
   ];
 
-  // Autoplay
   useEffect(() => {
     if (isPlaying) {
       intervalRef.current = setInterval(() => {
@@ -153,8 +152,12 @@ const Gallery = () => {
       <section id="projects" className="py-20 bg-engineering-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-engineering-dark mb-4">Project Gallery</h2>
-            <p className="text-lg text-muted-foreground">A showcase of our engineering excellence</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-engineering-dark mb-4">
+              Project Gallery
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground">
+              A showcase of our engineering excellence
+            </p>
           </div>
 
           <div className="relative max-w-6xl mx-auto">
@@ -175,10 +178,10 @@ const Gallery = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Mobile arrows (Moved to the sides to avoid interfering with the images) */}
+            {/* Mobile arrows (Minimalist without circles or borders) */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/4 z-10 bg-transparent text-white p-2 rounded-full border-2 border-white opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+              className="absolute left-4 top-1/4 z-10 text-white p-2 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -186,7 +189,7 @@ const Gallery = () => {
 
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/4 z-10 bg-transparent text-white p-2 rounded-full border-2 border-white opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+              className="absolute right-4 top-1/4 z-10 text-white p-2 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />
@@ -224,15 +227,19 @@ const Gallery = () => {
                   {/* Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 text-white">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="bg-engineering-dark px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-engineering-dark px-3 py-1 rounded-full text-xs sm:text-xs md:text-sm">
                         {galleryImages[currentIndex].category}
                       </span>
                     </div>
-                    <h3 className="text-3xl font-bold mb-3">{galleryImages[currentIndex].title}</h3>
-                    <p className="text-engineering-light text-lg leading-relaxed">
+                    <h3 className="text-3xl sm:text-2xl md:text-4xl font-bold mb-3">
+                      {galleryImages[currentIndex].title}
+                    </h3>
+                    <p className="text-engineering-light text-lg sm:text-sm md:text-xl leading-relaxed">
                       {galleryImages[currentIndex].description}
                     </p>
-                    <div className="mt-4 text-sm text-engineering-light">Click to view details</div>
+                    <div className="mt-4 text-sm sm:text-base md:text-lg text-engineering-light">
+                      Click to view details
+                    </div>
                   </div>
 
                   {/* Progress bar */}
