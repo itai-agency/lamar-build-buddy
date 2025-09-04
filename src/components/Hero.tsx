@@ -88,14 +88,14 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('contact')}
               size="lg"
               className="bg-engineering-cyan hover:bg-engineering-cyan/90 text-engineering-white font-semibold px-12 py-6 text-lg shadow-professional hover:shadow-hover transition-all duration-300 hover:scale-105"
             >
               Start Your Project
             </Button>
             <Button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('projects')}
               variant="outline"
               size="lg"
               className="bg-engineering-white text-engineering-dark border-2 border-engineering-white hover:bg-engineering-white/90 hover:text-engineering-dark backdrop-blur-sm px-12 py-6 text-lg transition-all duration-300 shadow-professional"
