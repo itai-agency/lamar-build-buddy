@@ -101,7 +101,7 @@ const Contact = () => {
               <div className="lg:w-1/2 space-y-6 flex flex-col items-center justify-center">
                 <h3 className="text-2xl font-semibold text-engineering-dark mb-6">Contact Information</h3>
                 <div className="space-y-4 text-center">
-                  <div className="flex items-center space-x-4 justify-center">
+                  <div className="flex items-center space-x-4 justify-start">
                     <Phone className="text-primary w-6 h-6" />
                     <a 
                       href="tel:+16194734045" 
@@ -110,7 +110,7 @@ const Contact = () => {
                       (619) 473-4045
                     </a>
                   </div>
-                  <div className="flex items-center space-x-4 justify-center">
+                  <div className="flex items-center space-x-4 justify-start">
                     <Mail className="text-primary w-6 h-6" />
                     <a 
                       href="mailto:llabrada@lamareng.com" 
@@ -119,7 +119,7 @@ const Contact = () => {
                       llabrada@lamareng.com
                     </a>
                   </div>
-                  <div className="flex items-center space-x-4 justify-center">
+                  <div className="flex items-center space-x-4 justify-start">
                     <Facebook className="text-primary w-6 h-6" />
                     <a 
                       href="https://www.facebook.com/lamareng" 
