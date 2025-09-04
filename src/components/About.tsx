@@ -31,7 +31,7 @@ const About = () => {
             <div className="absolute inset-0 bg-engineering-cyan/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
             <img 
               src={aboutEngineer} 
-              alt="Professional engineer working on construction plans"
+              alt="A group of professionals working in construction, smiling and wearing neon safety vests"
               className="relative w-full h-96 lg:h-[500px] object-cover rounded-2xl shadow-professional z-10"
             />
             <div className="absolute -bottom-6 -right-6 bg-engineering-white p-6 rounded-xl shadow-card z-20">
@@ -44,10 +44,7 @@ const About = () => {
           
           {/* Content */}
           <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-engineering-dark mb-8">
-              
-            </h3>
-            <div className="text-lg text-engineering-steel space-y-6 leading-relaxed">
+            <div className="text-lg text-engineering-steel space-y-6 leading-relaxed text-justify">
               <p>
                 A privately-owned civil and structural engineering design and consulting firm located in South Bay San Diego, providing professional engineering services to private residential and commercial projects.
               </p>
@@ -62,7 +59,7 @@ const About = () => {
             {/* Principal Info */}
             <div className="mt-8 p-6 bg-engineering-light/50 rounded-xl border-l-4 border-engineering-cyan">
               <h4 className="text-xl font-bold text-engineering-dark mb-3">Luis A. Labrada, P.E.</h4>
-              <p className="text-engineering-steel">
+              <p className="text-engineering-steel text-justify">
                 Our Principal brings over 18 years of combined experience in civil, structural, geotechnical, material testing and inspection, and project management. UCLA graduate (1997) with extensive experience in both private consulting and governmental agencies.
               </p>
             </div>

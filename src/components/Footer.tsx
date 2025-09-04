@@ -1,5 +1,5 @@
 import { Facebook, Phone, Mail } from 'lucide-react';
-import lamarLogoLight from '@/assets/lamar-light.png';
+import lamarLogoLight from '@/assets/lamarlogowhite3.png';
 import { Link } from 'react-router-dom'; // Si usas react-router
 
 const Footer = () => {

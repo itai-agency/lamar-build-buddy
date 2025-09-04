@@ -35,7 +35,7 @@ const Gallery = () => {
       title: 'RANCHO SANTA FE',
       description: 'Two-story single family custom home.',
       category: 'Residential',
-      location: 'Del Mar, CA', // si prefieres: 'Spring Valley, CA'
+      location: 'Del Mar, CA',
       size: '6,500 sq. ft.',
       architect: 'Clark Design Studio',
     },
@@ -225,7 +225,7 @@ const Gallery = () => {
                       className="h-full bg-engineering-dark"
                       initial={{ width: 0 }}
                       animate={{ width: '100%' }}
-                      transition={{ duration: 5, ease: 'linear' }}
+                      transition={{ duration: 8, ease: 'linear' }} // Tiempo ajustado a 8 segundos
                       key={currentIndex}
                     />
                   </div>
