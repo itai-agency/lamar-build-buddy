@@ -8,6 +8,10 @@ import customHome from '@/assets/Image5.jpg';
 import multiFamily from '@/assets/Image4.jpg';
 import structuralEngineering from '@/assets/image6.jpg';
 import civilEngineering from '@/assets/image1.jpg';
+import aditionalimage1 from '@/assets/IMG_1017.jpg';
+import aditionalimage2 from '@/assets/IMG_0160.jpg';
+import aditionalimage3 from '@/assets/IMG_1876.jpg';
+import aditionalimage4 from '@/assets/IMG_5738.jpg';
 
 interface Project {
   src: string;
@@ -69,6 +73,47 @@ const Gallery = () => {
       size: '10,000 sq. ft.',
       architect: '—',
     },
+    // Nuevas imágenes añadidas
+    {
+      src: aditionalimage1,
+      alt: 'Another custom home project',
+      title:'PARAISO DEVELOPMENT',
+      description: 'Two-story single family residence.',
+      category: 'Custom Homes/Additions',
+      location: 'Spring Valley, CA',
+      size: '2,500 sq. ft.',
+      architect: 'MC Design Studio',
+    },
+    {
+      src: aditionalimage2,
+      alt: 'A custom office space design',
+      title: 'LORING RESIDENCE',
+      description: 'Two-story single family residence.',
+      category: 'Custom Homes/Additions',
+      location: 'Pacific Beach, CA',
+      size: '2,900 sq. ft.',
+      architect: 'Joza Design Studio',
+    },
+    {
+      src: aditionalimage3,
+      alt: 'A large residential project',
+      title: 'MYERS RESIDENCE',
+      description: 'Three-story custom home.',
+      category: 'Custom Homes/Additions',
+      location: 'Carlsbad, CA',
+      size: '3,000 sq. ft.',
+      architect: 'Joza Design Studio',
+    },
+    {
+      src: aditionalimage4,
+      alt: 'Custom contemporary home',
+      title: 'MONTECITOS RESIDENCE',
+      description: 'Two-story hillside custom home.',
+      category: 'Custom Homes/Additions',
+      location: 'Los Angeles, CA',
+      size: '2,500 sq. ft.',
+      architect: 'Clark Design Studio',
+    }
   ];
 
   useEffect(() => {
@@ -178,27 +223,9 @@ const Gallery = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Mobile arrows (Minimalist with more height and slightly raised position) */}
-           {/* Mobile arrows (Slightly raised) */}
-{/* Mobile arrows (Slightly lower) */}
-{/* Mobile arrows (Positioned at the middle) */}
-<button
-  onClick={prevSlide}
-  className="absolute left-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
-  aria-label="Previous slide"
->
-  <ChevronLeft className="w-6 h-6" />
-</button>
-
-<button
-  onClick={nextSlide}
-  className="absolute right-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
-  aria-label="Next slide"
->
-  <ChevronRight className="w-6 h-6" />
-</button>
-
-
+            {/* Flechas móviles eliminadas */}
+            
+            {/* Controls */}
             <div className="absolute top-4 right-4 z-10 flex space-x-2">
               <button
                 onClick={togglePlayPause}
