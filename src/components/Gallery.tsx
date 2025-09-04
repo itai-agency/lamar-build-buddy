@@ -27,7 +27,6 @@ const Gallery = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // SOLO los campos permitidos + datos reales cuando están disponibles
   const galleryImages: Project[] = [
     {
       src: customHome,
@@ -79,7 +78,7 @@ const Gallery = () => {
         setCurrentIndex((prev) =>
           prev === galleryImages.length - 1 ? 0 : prev + 1
         );
-      }, 5000);
+      }, 8000); // Tiempo ajustado a 8 segundos
     } else if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -159,10 +158,10 @@ const Gallery = () => {
           </div>
 
           <div className="relative max-w-6xl mx-auto">
-            {/* Arrows */}
+            {/* Arrows (Traditional design in desktop mode) */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg hidden sm:block"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -170,10 +169,27 @@ const Gallery = () => {
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 bg-engineering-dark/80 text-white p-3 rounded-full hover:bg-engineering-dark transition-all duration-300 hover:scale-110 shadow-lg hidden sm:block"
               aria-label="Next slide"
             >
               <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Mobile arrows (Moved to the sides to avoid interfering with the images) */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/4 z-10 bg-transparent text-white p-2 rounded-full border-2 border-white opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/4 z-10 bg-transparent text-white p-2 rounded-full border-2 border-white opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
 
             {/* Controls */}
