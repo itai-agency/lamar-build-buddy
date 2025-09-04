@@ -178,24 +178,27 @@ const Gallery = () => {
               <ChevronRight className="w-6 h-6" />
             </button>
 
-            {/* Mobile arrows (Minimalist with slightly more height) */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
+            {/* Mobile arrows (Minimalist with more height and slightly raised position) */}
+           {/* Mobile arrows (Slightly raised) */}
+{/* Mobile arrows (Slightly lower) */}
+{/* Mobile arrows (Positioned at the middle) */}
+<button
+  onClick={prevSlide}
+  className="absolute left-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+  aria-label="Previous slide"
+>
+  <ChevronLeft className="w-6 h-6" />
+</button>
 
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+<button
+  onClick={nextSlide}
+  className="absolute right-4 top-1/4 z-10 text-white p-3 opacity-50 hover:opacity-80 transition-all duration-300 sm:hidden"
+  aria-label="Next slide"
+>
+  <ChevronRight className="w-6 h-6" />
+</button>
 
-            {/* Controls */}
+
             <div className="absolute top-4 right-4 z-10 flex space-x-2">
               <button
                 onClick={togglePlayPause}
